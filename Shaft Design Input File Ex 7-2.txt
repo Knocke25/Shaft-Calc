@@ -1,0 +1,57 @@
+
+
+# Lines starting with a # character are comments to be ignored
+# You may have comment lines anywhere in the file
+# blank lines are also allowed and will be ignored
+# Other lines in the file are identified by specific KEYWORDS, followed by data
+# KEYWORDS may include Capital letters, but capitalization must not be required
+# each line stands alone, and there is NO REQUIRED ORDER to the file
+
+Title, 'Formula Car Rear Axle'
+
+#            use:  'inch' or 'mm'
+Distance_unit,  'inch'
+Force_unit, 'lbf'
+
+# Se added!  to reduce calculations and table lookups
+#         Sut(MPa) Sy(MPa)  Se(MPa)   E(GPa)
+#         Sut(ksi) Sy(ksi)  Se (ksi)  E(Mpsi)
+Material,   105,    82,        25.1,         30
+
+Fatigue_factor, 2.5
+Static_factor, 3.5
+
+# Modified!  We don't care
+# Reliability,  99.9
+# Temperature,  300,  F
+
+
+# Modified!  To make simpler
+#    M                     Kf
+Stress_concentrations,    1.49
+
+shaft_length, 11.5
+
+# Loads - might be caused by gears, pulleys, clutches, brakes, 
+#         propellors, tires, pumps, etc.
+
+#      thrust  Fy    Fz    torque    My     Mz    Delta  Slope(rad)  Location Width
+Load,    0,  -197,  540,     3240,   0,    0,   0.003, 0.0005,       2.75,   1.5
+Load,    0,   -885,  -2431, -3240,   0,    0,   0.003, 0.0005,       8.5,    2.0
+# there is no limit on the number of load entries
+# any residual torque is carried to the far end of the shaft
+
+# Bearings
+# the Thrust bearing carries any residual thrust load
+# the Radial bearing cannot carry thrust loads
+# for this program, there must be one and only one of each 
+
+#               Slope(rad)  Location   Width   Min_ID
+Thrust_bearing,  0.0015,      10.75,    1.1,    0.75
+Radial_bearing,  0.0025,      0.75,     1.0,    0.50
+
+# Added!  To make simpler
+Diameters, (0, 1.0), (1.25, 1.4), (2.0, 1.625), (3.5, 2), (7.5, 1.625), (9.5, 1.4), (10.25, 1.0)
+
+
+  
